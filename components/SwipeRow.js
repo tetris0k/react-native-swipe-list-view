@@ -1,5 +1,3 @@
-
-
 import React, {
 	Component
 } from 'react';
@@ -229,10 +227,10 @@ class SwipeRow extends Component {
 				<Animated.View
 					{...this._panResponder.panHandlers}
 					style={{
-  transform: [
+            transform: [
 							{ translateX: this._translateX }
-  ]
-}}
+            ]
+          }}
 				>
 					{this.renderVisibleContent()}
 				</Animated.View>
@@ -243,10 +241,10 @@ class SwipeRow extends Component {
 					{...this._panResponder.panHandlers}
 					onLayout={ (e) => this.onContentLayout(e) }
 					style={{
-  transform: [
+            transform: [
 							{ translateX: this._translateX }
-  ]
-}}
+            ]
+          }}
 				>
 					{this.renderVisibleContent()}
 				</Animated.View>
@@ -258,12 +256,12 @@ class SwipeRow extends Component {
     return (
 			<View style={this.props.style ? this.props.style : styles.container}>
 				<View style={[
-  styles.hidden,
-  {
-    height: this.state.hiddenHeight,
-    width: this.state.hiddenWidth
-  }
-]}>
+          styles.hidden,
+          {
+            height: this.state.hiddenHeight,
+            width: this.state.hiddenWidth
+          }
+        ]}>
 					{this.props.children[0]}
 				</View>
 				{this.renderRowContent()}
