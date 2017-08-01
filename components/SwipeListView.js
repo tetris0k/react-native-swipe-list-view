@@ -1,9 +1,9 @@
 'use strict';
 
 import React, {
-	Component,
-	PropTypes,
+	Component
 } from 'react';
+import PropTypes from 'prop-types';
 import {
 	ListView,
 	Text,
@@ -22,6 +22,10 @@ class SwipeListView extends Component {
 		this._rows = {};
 		this.openCellId = null;
 	}
+
+	componentWillUnmount() {
+	  this.safeCloseOpenRow();
+  }
 
 	setScrollEnabled(enable) {
 		this._listView.setNativeProps({scrollEnabled: enable});
@@ -105,8 +109,8 @@ class SwipeListView extends Component {
 					leftOpenValue={this.props.leftOpenValue}
 					rightOpenValue={this.props.rightOpenValue}
 					closeOnRowPress={this.props.closeOnRowPress}
-					disableLeftSwipe={this.props.disableLeftSwipe}
-					disableRightSwipe={this.props.disableRightSwipe}
+					disableLeftSwipe={this.props.disableLeftSwipe || typeof rowData === 'string'}
+					disableRightSwipe={this.props.disableRightSwipe || typeof rowData === 'string'}
 					stopLeftSwipe={this.props.stopLeftSwipe}
 					stopRightSwipe={this.props.stopRightSwipe}
 					recalculateHiddenLayout={this.props.recalculateHiddenLayout}
